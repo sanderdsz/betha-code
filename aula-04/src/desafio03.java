@@ -43,7 +43,8 @@ public class desafio03 {
         break;
 
       case 3:
-        String[] fruits = {"apples", "tomatoes", "bananas", "guavas", "pineapples"};
+        String[] fruits = {"apples", "tomatoes", "bananas", "guavas", "pineapples",
+                "watermelons", "pear", "grapes", "kiwis", "coconuts"};
         System.out.println("Original: " + Arrays.asList(fruits));
         reverse(fruits);
         break;
