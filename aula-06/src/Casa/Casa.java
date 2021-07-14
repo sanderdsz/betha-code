@@ -1,4 +1,4 @@
-package casa;
+package Casa;
 
 public class Casa {
 
