@@ -13,19 +13,23 @@ public class Main {
 
   public static void main(String[] args) {
     System.out.println("hello world");
+
+    Funcionario funcionario1 = FuncionarioBuilder.criaFuncionario("ESTAGIARIO");
+    funcionario1.setSalarioBruto(1000.00);
+    System.out.println(funcionario1.getSalarioBruto());
+
   }
 
   public static class FuncionarioBuilder {
     public static Funcionario criaFuncionario(String tipo) {
-      switch (tipo) {
-        case "ESTAGIARIO":
-          return new Estagiario();
-        case "ANALISTA":
-          return new Analista();
-        case "ARQUITETO":
-          return new Arquiteto();
-        case "COORDENADOR":
-          return new Coordenador();
+      if (tipo.equals("ESTAGIARIO")) {
+        return new Estagiario();
+      } if (tipo.equals("ANALISTA")) {
+        return new Analista();
+      } if (tipo.equals("ARQUITETO")) {
+        return new Arquiteto();
+      } else {
+        return new Coordenador();
       }
     }
   }
@@ -35,10 +39,10 @@ public class Main {
     private Integer id;
     private Funcionario funcionario;
     private Date dataPagamento;
-    private List<Descontos> descontos;
+    private Descontos[] descontos;
     private Double salarioLiquido;
 
-    public Folha(Integer id, Funcionario funcionario, Date dataPagamento, List<Descontos> descontos, Double salarioLiquido) {
+    public Folha(Integer id, Funcionario funcionario, Date dataPagamento, Descontos[] descontos, Double salarioLiquido) {
       this.id = id;
       this.funcionario = funcionario;
       this.dataPagamento = dataPagamento;
@@ -46,8 +50,29 @@ public class Main {
       this.salarioLiquido = salarioLiquido;
     }
 
-    public Double calcular() {
-      return
+    public void calcular() {
+      this.calcular(null, null);
+    }
+
+    public void calcular(Descontos[] descontos) {
+      this.calcular(descontos, null);
+    }
+
+    public void calcular(Descontos[] descontos, Double bonus) {
+      Double salarioBruto = funcionario.getSalarioBruto();
+      Double salarioLiquido = salarioBruto;
+
+      // salarioLiquido -= get
+
+    }
+
+    public Double getDescontoIRPF(Double salarioBruto) {
+      Double desconto = 0.0;
+      Double descontoPercentual = 0.0;
+
+      if (salarioBruto < 1991.90) {
+        descontoPercentual = 0.0;
+      } return null;
     }
 
     public Integer getId() {
@@ -74,11 +99,11 @@ public class Main {
       this.dataPagamento = dataPagamento;
     }
 
-    public List<Descontos> getDescontos() {
+    public Descontos[] getDescontos() {
       return descontos;
     }
 
-    public void setDescontos(List<Descontos> descontos) {
+    public void setDescontos(Descontos[] descontos) {
       this.descontos = descontos;
     }
 
