@@ -6,10 +6,10 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       PGDATA: /data/postgres
     volumes:
-       - /home/sander.zuchinalli/sander/postgres:/data/postgres
+       - ~/sander/postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
