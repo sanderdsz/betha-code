@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       PGDATA: /data/postgres
     volumes:
-       - ~/sander/postgres:/data/postgres
+       - ~/sander/postgres:/data/postgresql
     ports:
       - "5432:5432"
     networks:
