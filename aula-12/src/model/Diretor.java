@@ -16,6 +16,10 @@ public class Diretor {
         this.bonus = bonus;
     }
 
+    public Diretor() {
+
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,6 +1,7 @@
 package repository;
 
-import model.Funcionario;
+import model.Diretor;
+import model.Diretor;
 import util.ConnectionManager;
 
 import java.sql.Connection;
@@ -10,15 +11,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuncionarioRepository implements IRepository<Funcionario> {
+public class DiretorRepository implements IRepository<Diretor> {
     @Override
-    public List<Funcionario> findAll() throws SQLException, ClassNotFoundException {
+    public List<Diretor> findAll() throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionManager.getConnection();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM funcionarios ");
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM diretores ");
         ResultSet resultSet = null;
         resultSet = statement.executeQuery();
 
-        List<Funcionario> funcionarios = new ArrayList<>();
+        List<Diretor> diretores = new ArrayList<>();
 
         System.out.println("Find All =>");
         while (resultSet.next()) {
@@ -26,13 +27,13 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
             System.out.println(index);
         }
         conn.close();
-        return funcionarios;
+        return diretores;
     }
 
     @Override
-    public Funcionario findById(Integer id) throws SQLException, ClassNotFoundException {
+    public Diretor findById(Integer id) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionManager.getConnection();
-        PreparedStatement statement3 = conn.prepareStatement("SELECT * FROM funcionarios WHERE id = ?");
+        PreparedStatement statement3 = conn.prepareStatement("SELECT * FROM diretores WHERE id = ?");
         statement3.setInt(1, id);
         ResultSet resultSet3 = null;
         resultSet3 = statement3.executeQuery();
@@ -43,6 +44,6 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
         }
         conn.close();
 
-        return new Funcionario();
+        return new Diretor();
     }
 }
